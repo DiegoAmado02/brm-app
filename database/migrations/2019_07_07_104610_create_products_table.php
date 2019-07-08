@@ -16,10 +16,10 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product');
-            $table->string('lote');
+            $table->string('lote')->nullable();
             $table->integer('quantity')->default(0);
-            $table->date('expiration_date');
-            $table->double('price');
+            $table->date('expiration_date')->nullable();
+            $table->double('price')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

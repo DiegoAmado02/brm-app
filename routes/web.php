@@ -12,7 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('provider.create');
 });
 
-Route::get('/proveedor', 'ProductsController@');
+Route::get('/proveedor/productos', 'ProductsController@indexprod')->name('provider.products');
+
+Route::get('/proveedor/producto', 'ProductsController@createprod')->name('provider.create');
+
+Route::post('/proveedor/nuevo','ProductsController@storeprod');
+
+Route::get('/cliente/productos', 'ProductsController@clientprod')->name('cliente.products');
+
+Route::get('/cliente/compra','ProductsController@editprod')->name('cliente.edit');
+
+Route::get('/cliente/compra/ajax', 'ProductsController@ajaxRequest');
+
+Route::post('/cliente/compra', 'ProductsController@ajaxRequestPost');
+
+Route::get('/cliente/count/ajax', 'ProductsController@ajaxRequestCount');
+
+Route::post('/cliente/count', 'ProductsController@ajaxRequestPostCount');
+
+Route::put('/cliente/pagar','ProductsController@update');
